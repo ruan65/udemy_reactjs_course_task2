@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Input from './components/Input'
-
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      inputedText: ""
+    }
+  }
+
+  inputHandler = (event) => {
+
+    console.log(event.target.value)
+
+    this.setState({inputedText: event.target.value})
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,7 +31,11 @@ class App extends Component {
         <p>Hint: Keep in mind that JavaScript strings are basically arrays!</p>
         <br/>
         <br/>
-        <Input />
+        <div>
+          <label>Input: </label>
+          <input type='text' onChange={this.inputHandler} />
+          <p>Input count: <strong>{this.state.inputedText.split('').length}</strong></p>
+        </div>
       </div>
     );
   }
