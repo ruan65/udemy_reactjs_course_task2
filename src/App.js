@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Validation from './Components/Validation'
+import CharBox from './Components/CharComponent'
 
 class App extends Component {
 
@@ -19,6 +20,15 @@ class App extends Component {
   }
 
   render() {
+
+    const chars = <div>{
+      
+      this.state.inputedText.split('').map((ch, i) => {
+        return <CharBox letter={ch} key={i}/>
+      })
+      
+    }</div>
+    
     return (
       <div className="App">
         <ol>
@@ -39,6 +49,8 @@ class App extends Component {
         </div>
         
         <Validation inputedText={this.state.inputedText}/>
+        
+        { chars }
       </div>
     );
   }
