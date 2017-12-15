@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Validation from './Components/Validation'
 
 class App extends Component {
 
@@ -36,6 +37,8 @@ class App extends Component {
           <input type='text' onChange={this.inputHandler} />
           <p>Input count: <strong>{this.state.inputedText.split('').length}</strong></p>
         </div>
+        
+        <Validation inputedText={this.state.inputedText}/>
       </div>
     );
   }
