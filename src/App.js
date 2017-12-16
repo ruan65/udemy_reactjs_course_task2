@@ -17,7 +17,12 @@ class App extends Component {
   }
   
   deleteLetterHandler = (i) => {
-    console.log(i)
+  
+    let input = this.state.inputedText
+    
+    this.setState({
+      inputedText: input.slice(0, i) + input.slice(i + 1, input.length)
+    })
   }
 
   render() {
@@ -49,8 +54,8 @@ class App extends Component {
         <br/>
         <div>
           <label>Input: </label>
-          <input type='text' onChange={this.inputHandler} />
-          <p>Input count: <strong>{this.state.inputedText.split('').length}</strong></p>
+          <input type='text' onChange={this.inputHandler} value={this.state.inputedText}/>
+          <p>Input count: <strong>{this.state.inputedText.length}</strong></p>
         </div>
         
         <Validation inputedText={this.state.inputedText}/>
