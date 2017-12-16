@@ -13,10 +13,11 @@ class App extends Component {
   }
 
   inputHandler = (event) => {
-
-    console.log(event.target.value)
-
     this.setState({inputedText: event.target.value})
+  }
+  
+  deleteLetterHandler = (i) => {
+    console.log(i)
   }
 
   render() {
@@ -24,7 +25,11 @@ class App extends Component {
     const chars = <div>{
       
       this.state.inputedText.split('').map((ch, i) => {
-        return <CharBox letter={ch} key={i}/>
+        return <CharBox
+          letter={ch}
+          key={i}
+          remove={() => this.deleteLetterHandler(i)}
+        />
       })
       
     }</div>
